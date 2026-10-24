@@ -1,0 +1,324 @@
+/* =========================================================
+   1. VARIABEL WARNA
+   Ditulis sekali di sini, lalu dipakai di mana-mana pakai var(--nama).
+   Kalau mau ganti warna, cukup ubah di sini saja.
+   ========================================================= */
+:root {
+  --biru: #1E40AF;
+  --biru-gelap: #1E3A8A;   /* dipakai saat tombol WA ditekan */
+  --merah: #DC2626;
+  --merah-tua: #991B1B;    /* judul di kotak ajakan daftar */
+  --merah-muda: #FEF2F2;   /* latar kotak ajakan daftar */
+  --hijau: #16A34A;
+  --abu: #6B7280;
+  --abu-tua: #374151;
+  --abu-muda: #F9FAFB;     /* latar abu-abu sangat muda */
+  --border: #E5E7EB;       /* warna border tipis */
+  --radius: 12px;          /* sudut membulat semua kartu */
+}
+
+/* =========================================================
+   2. RESET DASAR
+   box-sizing: border-box = padding & border dihitung di dalam lebar,
+   jadi ukuran kotak lebih mudah ditebak.
+   ========================================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #FFFFFF;
+  color: var(--abu-tua);
+  /* Inter dulu; kalau gagal dimuat, pakai font sans-serif bawaan */
+  font-family: "Inter", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Pembungkus konten: maks 900px, di tengah (margin auto kiri-kanan) */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* =========================================================
+   3. HEADER / LOGO
+   ========================================================= */
+.header {
+  text-align: center; /* semua isi header di tengah */
+}
+
+.logo {
+  font-size: 64px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.logo-man  { color: var(--biru); }
+.logo-jour { color: var(--merah); }
+
+.tagline {
+  color: var(--abu);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 4px; /* jarak antar huruf agak lebar */
+  margin-top: 8px;
+}
+
+.subtitle {
+  color: var(--abu-tua);
+  font-size: 16px;
+  margin-top: 6px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 32px 0;
+}
+
+/* =========================================================
+   4. BAGIAN 1: KARTU HARGA
+   ========================================================= */
+/* Grid 2 kolom yang sama lebar (1fr 1fr) */
+.pricing {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.price-card {
+  position: relative; /* supaya label "PALING HEMAT" bisa diposisikan */
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  /* transition = perubahan dibuat halus, bukan tiba-tiba */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Class ini ditambahkan oleh script.js saat kursor di atas kartu */
+.price-card.is-hovered {
+  transform: translateY(-6px);                    /* naik sedikit */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.10);    /* bayangan muncul */
+}
+
+/* Kartu unggulan: border biru tebal & latar abu-abu muda */
+.price-card.featured {
+  border: 2px solid var(--biru);
+  background: var(--abu-muda);
+}
+
+/* Label pil merah di tengah atas, menempel di garis border */
+.badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  /* geser ke kiri setengah lebarnya & ke atas setengah tingginya
+     -> pas di tengah dan menempel di garis */
+  transform: translate(-50%, -50%);
+  background: var(--merah);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase; /* jadi huruf kapital */
+  letter-spacing: 1px;
+  padding: 4px 14px;
+  border-radius: 999px;      /* angka besar = bentuk pil */
+  white-space: nowrap;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--abu-tua);
+}
+
+.price {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--biru);
+  line-height: 1.2;
+  margin-top: 8px;
+}
+
+.price-note {
+  font-size: 14px;
+  color: var(--abu);
+}
+
+.saving {
+  color: var(--hijau);
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.card-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 20px 0;
+}
+
+/* Daftar dengan centang hijau */
+.checklist {
+  list-style: none; /* hapus titik bawaan */
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 28px; /* ruang untuk tanda centang */
+  margin-bottom: 10px;
+}
+
+/* ::before = isi tambahan sebelum teks, di sini tanda centang */
+.checklist li::before {
+  content: "\2713";  /* kode untuk simbol centang ✓ */
+  position: absolute;
+  left: 0;
+  color: var(--hijau);
+  font-weight: 700;
+}
+
+/* =========================================================
+   5. BAGIAN 2: KEUNGGULAN
+   ========================================================= */
+.features {
+  background: var(--abu-muda);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  margin-bottom: 40px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--abu-tua);
+  margin-bottom: 24px;
+}
+
+/* Grid 2 kolom; 4 kartu otomatis jadi 2 baris */
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.feature-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.feature-card h3 {
+  color: var(--biru);
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.feature-card p {
+  color: var(--abu-tua);
+  font-size: 15px;
+}
+
+/* =========================================================
+   6. BAGIAN 3: AJAKAN DAFTAR
+   ========================================================= */
+.cta {
+  display: flex;                    /* teks kiri, tombol kanan */
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background: var(--merah-muda);
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--merah); /* garis merah tebal di kiri */
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.cta-text h2 {
+  color: var(--merah-tua);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.cta-text p {
+  color: var(--abu-tua);
+  font-size: 15px;
+}
+
+.wa-button {
+  display: inline-block;
+  background: var(--biru);
+  color: #FFFFFF;
+  text-decoration: none; /* hapus garis bawah link */
+  font-weight: 700;
+  padding: 14px 22px;
+  border-radius: var(--radius);
+  white-space: nowrap;   /* teks tombol tidak terpotong ke baris baru */
+  transition: background 0.15s ease;
+}
+
+/* Class ini ditambahkan oleh script.js saat tombol ditekan */
+.wa-button.is-pressed {
+  background: var(--biru-gelap);
+}
+
+/* Garis fokus saat pakai keyboard (Tab), agar tetap mudah diakses */
+.wa-button:focus-visible {
+  outline: 3px solid var(--merah);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   7. FOOTER
+   ========================================================= */
+.footer {
+  text-align: center;
+  color: var(--abu);
+  font-size: 13px;
+  margin-top: 40px;
+}
+
+/* =========================================================
+   8. RESPONSIF (HP)
+   Aturan di dalam @media hanya berlaku kalau layar <= 640px.
+   ========================================================= */
+@media (max-width: 640px) {
+  .logo { font-size: 48px; }
+
+  /* Kartu harga & keunggulan jadi 1 kolom (tersusun ke bawah) */
+  .pricing,
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Jarak lebih besar agar label "PALING HEMAT" tidak menabrak kartu atas */
+  .pricing { gap: 36px; }
+
+  /* Kotak ajakan: teks di atas, tombol di bawah */
+  .cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wa-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Untuk pengguna yang mematikan animasi di pengaturan HP/laptop */
+@media (prefers-reduced-motion: reduce) {
+  .price-card,
+  .wa-button {
+    transition: none;
+  }
+}
