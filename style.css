@@ -77,7 +77,17 @@ h1, h2, h3 { color: var(--navy); line-height: 1.25; }
   transition: top var(--speed) ease, left var(--speed) ease, transform var(--speed) ease;
 }
 
+/* --- Ikon logo: selalu di pojok KIRI atas --- */
+.brand-icon {
+  position: absolute;
+  top: 22px;
+  left: 20px;
+  display: block;
+  transition: top var(--speed) ease;
+}
+
 .brand-logo {
+  display: block;
   height: 72px;
   width: auto;
   transition: height var(--speed) ease;
@@ -114,6 +124,9 @@ h1, h2, h3 { color: var(--navy); line-height: 1.25; }
 .main-nav a:hover { color: var(--navy); }
 
 .main-nav .nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: #fff;
   background: var(--blue);
   padding: 8px 16px;
@@ -134,13 +147,14 @@ h1, h2, h3 { color: var(--navy); line-height: 1.25; }
   left: calc(100% - 20px);
   transform: translateX(-100%);
 }
+.site-header.is-small .brand-icon { top: 12px; }
 .site-header.is-small .brand-logo { height: 40px; }
 .site-header.is-small .brand-text { font-size: 1.35rem; }
 
-/* Menu pindah ke kiri */
+/* Menu pindah ke kiri, di sebelah kanan ikon logo */
 .site-header.is-small .main-nav {
   bottom: 14px;
-  left: 20px;
+  left: 84px;
   transform: translateX(0);
 }
 
@@ -151,7 +165,10 @@ h1, h2, h3 { color: var(--navy); line-height: 1.25; }
    TOMBOL
    ========================================================= */
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   padding: 14px 26px;
   border-radius: 999px;
   font-weight: 700;
@@ -169,7 +186,35 @@ h1, h2, h3 { color: var(--navy); line-height: 1.25; }
 .btn-gold { background: var(--gold); color: var(--navy); }
 .btn-gold:hover { background: #D97706; }
 
-.btn-block { display: block; text-align: center; margin-top: 24px; }
+.btn-block { display: flex; text-align: center; margin-top: 24px; }
+
+/* Ikon WhatsApp di dalam tombol.
+   Warnanya mengikuti warna teks tombol (bukan hijau WhatsApp). */
+.wa-icon {
+  width: 1.15em;
+  height: 1.15em;
+  flex-shrink: 0;
+}
+
+/* Tombol WhatsApp melayang di pojok kanan bawah */
+.wa-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold);        /* warna ikon: kuning emas */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(30, 58, 138, 0.3);
+  z-index: 90;
+  transition: transform 0.2s, background 0.2s;
+}
+.wa-float svg { width: 30px; height: 30px; }
+.wa-float:hover { background: var(--blue); transform: scale(1.06); }
 
 /* Garis fokus jelas untuk pengguna keyboard */
 a:focus-visible, button:focus-visible, summary:focus-visible {
@@ -426,15 +471,23 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   position: relative;
 }
 .faq summary::-webkit-details-marker { display: none; } /* hilangkan panah bawaan Safari */
+/* Tanda panah: dibuat dari 2 garis (sudut kotak yang diputar).
+   Tertutup = panah ke bawah (v). Terbuka = panah ke atas (^). */
 .faq summary::after {
-  content: "+";
+  content: "";
   position: absolute;
-  right: 4px;
-  font-size: 1.4rem;
-  line-height: 1;
-  color: var(--blue);
+  right: 8px;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border-right: 2.5px solid var(--blue);
+  border-bottom: 2.5px solid var(--blue);
+  transform: translateY(-75%) rotate(45deg);   /* menghadap ke bawah */
+  transition: transform var(--speed) ease;
 }
-.faq details[open] summary::after { content: "\2212"; } /* tanda minus */
+.faq details[open] summary::after {
+  transform: translateY(-25%) rotate(-135deg); /* menghadap ke atas */
+}
 .faq details p { padding-bottom: 20px; }
 
 /* ---------- Ajakan terakhir ---------- */
@@ -472,12 +525,17 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 @media (max-width: 768px) {
   :root { --header-big: 130px; --header-small: 60px; }
 
-  .brand { top: 26px; }
-  .brand-logo { height: 52px; }
+  /* Di HP: baris atas = hamburger + ikon logo, tulisan ManJour di bawahnya */
+  .brand { top: 62px; }
+  /* Ikon logo di sebelah kanan tombol hamburger */
+  .brand-icon { top: 10px; left: 64px; }
+  .brand-logo { height: 40px; }
   .brand-text { font-size: 2.1rem; }
   .site-header.is-small .brand { top: 11px; }
+  .site-header.is-small .brand-icon { top: 12px; }
   .site-header.is-small .brand-logo { height: 36px; }
   .site-header.is-small .brand-text { font-size: 1.2rem; }
+  .wa-float { width: 52px; height: 52px; right: 16px; bottom: 16px; }
 
   /* Tombol hamburger di pojok kiri atas */
   .menu-toggle {
