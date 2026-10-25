@@ -1,139 +1,311 @@
 <!DOCTYPE html>
-<!-- Memberi tahu browser bahwa ini dokumen HTML5. lang="id" = bahasa Indonesia -->
 <html lang="id">
 <head>
-  <!-- charset UTF-8 supaya huruf Mandarin (学中文) tampil dengan benar -->
   <meta charset="UTF-8">
-  <!-- Wajib untuk responsif: lebar halaman mengikuti lebar layar HP -->
+  <!-- Supaya tampilan pas di layar HP -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO: judul di tab browser & hasil pencarian Google -->
-  <title>Manjour - Les Privat Bahasa Mandarin HSK 1 | Mulai 50k</title>
-  <!-- SEO: deskripsi singkat yang muncul di bawah judul di Google -->
-  <meta name="description" content="Manjour Mandarin Language Center: les privat bahasa Mandarin standar HSK, online via Zoom atau offline. Mulai 50k per sesi atau 250k per bulan. Free trial session!">
+  <!-- SEO: judul tab dan deskripsi di Google -->
+  <title>ManJour - Les Privat Mandarin Santai, Jadwal Fleksibel, Harga Pelajar</title>
+  <meta name="description" content="ManJour (Mandarin Journey): les privat bahasa Mandarin online via Zoom atau offline. Kurikulum HSK 1-3, jadwal fleksibel, mulai 45k per sesi. Kelas pertama gratis.">
 
-  <!-- Mengambil font Inter dari Google Fonts -->
+  <!-- Font Inter dari Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Menghubungkan file CSS kita -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Pembungkus utama: membuat konten di tengah dengan lebar maks 900px -->
-  <div class="container">
+  <!-- ===================== MENU ATAS (HEADER) =====================
+       Saat di paling atas: logo besar di tengah.
+       Saat di-scroll: script.js menambah class "is-small",
+       logo mengecil dan pindah ke pojok kanan atas. -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
 
-    <!-- ================= HEADER / IDENTITAS ================= -->
-    <header class="header">
-      <!-- Logo: "Man" dan "jour" dipisah pakai <span> agar warnanya beda -->
-      <h1 class="logo">
-        <span class="logo-man">Man</span><span class="logo-jour">jour</span>
-      </h1>
-      <p class="tagline">MANDARIN LANGUAGE CENTER</p>
-      <!-- lang="zh" memberi tahu browser bahwa teks ini bahasa Mandarin -->
-      <p class="subtitle" lang="zh">HSK 1 学中文 · 开启新旅程</p>
-      <!-- <hr> = garis pemisah -->
-      <hr class="divider">
-    </header>
+      <!-- Logo + tulisan ManJour -->
+      <a href="#beranda" class="brand" aria-label="ManJour, kembali ke atas">
+        <!-- Kalau file logo belum ada, script.js menyembunyikan gambar ini -->
+        <img src="logo_ManJour.png" alt="" class="brand-logo" id="brandLogo">
+        <span class="brand-text"><span class="brand-man">Man</span><span class="brand-jour">Jour</span></span>
+      </a>
 
-    <main>
+      <!-- Tombol hamburger (hanya muncul di HP) -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
 
-      <!-- ================= BAGIAN 1: KARTU HARGA ================= -->
-      <section class="pricing" aria-label="Pilihan harga les">
+      <!-- Menu navigasi -->
+      <nav class="main-nav" id="mainNav" aria-label="Menu utama">
+        <a href="#program">Program</a>
+        <a href="#harga">Harga</a>
+        <a href="#jalur-hsk">Jalur HSK</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://wa.me/62812XXXXXXXX?text=Halo%20ManJour%2C%20saya%20mau%20konsultasi%20gratis" target="_blank" rel="noopener" class="nav-cta">Konsultasi Gratis</a>
+      </nav>
+    </div>
+  </header>
 
-        <!-- Kartu kiri -->
-        <article class="price-card">
-          <h2 class="card-title">Per Pertemuan</h2>
-          <p class="price">50k</p>
-          <p class="price-note">/ 1x Sesi Pembelajaran</p>
-          <hr class="card-divider">
-          <!-- class "checklist" akan diberi tanda centang hijau lewat CSS -->
-          <ul class="checklist">
-            <li>Durasi 60 Menit / Sesi</li>
-            <li>Sistem Pay-as-you-go</li>
-            <li>Materi Pembelajaran Digital</li>
-            <li>Jadwal Fleksibel</li>
-            <li>Laporan Perkembangan Sesi</li>
-          </ul>
-        </article>
+  <main>
 
-        <!-- Kartu kanan (unggulan). Ada class tambahan "featured" -->
-        <article class="price-card featured">
-          <!-- Label pil merah yang menempel di garis border atas -->
-          <span class="badge">Paling Hemat</span>
-          <h2 class="card-title">Paket Bulanan</h2>
-          <p class="price">250k</p>
-          <p class="price-note">/ 1 Bulan (8 Pertemuan)</p>
-          <p class="saving">Hemat 150k dibanding eceran!</p>
-          <hr class="card-divider">
-          <ul class="checklist">
-            <li>8x Sesi Pembelajaran Terstruktur</li>
-            <li>2x Pertemuan / Minggu</li>
-            <li>Modul Lengkap &amp; Practice Sheet</li>
-            <li>Free Konsultasi PR / Tugas</li>
-            <li>Sertifikat Kelulusan Level</li>
-          </ul>
-        </article>
+    <!-- ===================== HERO (BAGIAN PEMBUKA) ===================== -->
+    <section class="hero" id="beranda">
+      <div class="container">
+        <p class="eyebrow">Mandarin Language Center</p>
+        <h1>Bisa Ngobrol Mandarin<br>dari Nol dalam 3 Bulan</h1>
+        <p class="tagline">Mandarin Journey &mdash; les privat santai, jadwal fleksibel, harga pelajar.</p>
 
-      </section>
+        <div class="hero-buttons">
+          <a href="https://wa.me/62812XXXXXXXX?text=Halo%20ManJour%2C%20saya%20mau%20coba%20kelas%20gratis" target="_blank" rel="noopener" class="btn btn-primary">Coba Kelas Gratis</a>
+          <a href="#harga" class="btn btn-ghost">Lihat Harga</a>
+        </div>
 
-      <!-- ================= BAGIAN 2: KEUNGGULAN ================= -->
-      <section class="features">
-        <h2 class="section-title">Keunggulan Belajar di Manjour</h2>
+        <p class="hero-note">Online via Zoom &middot; Offline Private &middot; Kurikulum HSK 1-3</p>
+      </div>
+    </section>
 
-        <!-- Grid 2 kolom x 2 baris -->
-        <div class="features-grid">
-          <div class="feature-card">
-            <h3>Kurikulum Terstandar HSK</h3>
-            <p>Materi disesuaikan dengan standar ujian internasional Mandarin (HSK 1 - HSK 6).</p>
+    <!-- ===================== PROGRAM ===================== -->
+    <section class="section section-alt" id="program">
+      <div class="container">
+        <h2 class="section-title">Pilih Cara Belajarmu</h2>
+        <p class="section-sub">Dua pilihan kelas, materi dan harganya sama.</p>
+
+        <!-- Dua kolom teks + ikon, tanpa kotak -->
+        <div class="program-list">
+          <div class="program-item">
+            <!-- Ikon laptop (SVG sederhana) -->
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v10H4z M2 18h20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <h3>Online via Zoom</h3>
+              <p>Belajar dari rumah atau kos. Cukup HP atau laptop dan internet.</p>
+            </div>
           </div>
-          <div class="feature-card">
-            <h3>Pengajar Berkualitas</h3>
-            <p>Tutor berpengalaman, bersertifikasi, dan metode mengajar yang interaktif.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Metode Komunikatif</h3>
-            <p>Fokus pada praktek percakapan sehari-hari (Speaking &amp; Listening).</p>
-          </div>
-          <div class="feature-card">
-            <h3>Kelas Interaktif</h3>
-            <p>Tersedia pilihan kelas Online via Zoom / Offline Private.</p>
+          <div class="program-item">
+            <!-- Ikon orang -->
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <div>
+              <h3>Offline Private</h3>
+              <p>Tatap muka satu guru satu murid. Lokasi dan jam diatur bersama.</p>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- ================= BAGIAN 3: AJAKAN DAFTAR ================= -->
-      <section class="cta">
-        <div class="cta-text">
-          <h2>Daftar &amp; Pilih Jadwal Kelasmu Sekarang!</h2>
-          <p>Hubungi kami untuk free trial session atau konsultasi level.</p>
+    <!-- ===================== JALUR HSK (1 sampai 3) =====================
+         Ditampilkan seperti tangga/garis waktu, bukan kotak.
+         Di HP otomatis jadi vertikal (lihat style.css). -->
+    <section class="section" id="jalur-hsk">
+      <div class="container">
+        <h2 class="section-title">Jalur Belajar HSK 1-3</h2>
+        <p class="section-sub">HSK adalah ujian resmi bahasa Mandarin. Kamu naik pelan-pelan, satu level demi satu level.</p>
+
+        <ol class="steps">
+          <li class="step">
+            <span class="step-dot">1</span>
+            <h3>HSK 1 &middot; Pemula</h3>
+            <p>Perkenalan diri, angka, salam. Sekitar 150 kosakata.</p>
+          </li>
+          <li class="step">
+            <span class="step-dot">2</span>
+            <h3>HSK 2 &middot; Dasar</h3>
+            <p>Belanja, jam, kegiatan sehari-hari. Sekitar 300 kosakata.</p>
+          </li>
+          <li class="step">
+            <span class="step-dot">3</span>
+            <h3>HSK 3 &middot; Menengah Awal</h3>
+            <p>Ngobrol santai dan cerita singkat. Sekitar 600 kosakata.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== HARGA =====================
+         Teknik marketing:
+         - Harga coret (harga normal dicoret, harga promo besar)
+         - Harga per sesi di paket supaya terlihat lebih murah
+         - Kartu tengah paling menonjol, paket 3 bulan sebagai pembanding -->
+    <section class="section section-alt" id="harga">
+      <div class="container">
+        <h2 class="section-title">Harga Promo</h2>
+        <p class="section-sub">Semua paket durasi 60 menit per sesi.</p>
+
+        <div class="pricing">
+
+          <!-- Kartu 1: Per Pertemuan -->
+          <article class="price-card">
+            <h3>Per Pertemuan</h3>
+            <p class="price-old">60k</p>
+            <p class="price"><span>45k</span></p>
+            <p class="price-unit">/ 1 sesi, 60 menit</p>
+            <ul class="checklist">
+              <li>Durasi 60 menit / sesi</li>
+              <li>Bayar per sesi, tanpa ikatan</li>
+              <li>Jadwal fleksibel</li>
+              <li>Materi digital</li>
+              <li>Laporan perkembangan</li>
+            </ul>
+          </article>
+
+          <!-- Kartu 2: Paket Bulanan (UNGGULAN) -->
+          <article class="price-card featured">
+            <span class="badge">PALING HEMAT</span>
+            <h3>Paket Bulanan</h3>
+            <p class="price-old">360k</p>
+            <p class="price"><span>229k</span></p>
+            <p class="price-unit">/ 8 pertemuan (2x seminggu)</p>
+            <p class="per-session">Cuma &plusmn;29k per sesi</p>
+            <p class="saving">Hemat 131k dibanding bayar per sesi!</p>
+            <ul class="checklist">
+              <li>8x sesi terstruktur</li>
+              <li>Jadwal fleksibel</li>
+              <li>Modul &amp; practice sheet</li>
+              <li>Free konsultasi PR / tugas</li>
+              <li>Laporan perkembangan</li>
+              <li>Sertifikat level</li>
+            </ul>
+            <a href="https://wa.me/62812XXXXXXXX?text=Halo%20ManJour%2C%20saya%20mau%20ambil%20Paket%20Bulanan" target="_blank" rel="noopener" class="btn btn-primary btn-block">Ambil Paket Ini</a>
+          </article>
+
+          <!-- Kartu 3: Paket 3 Bulan -->
+          <article class="price-card">
+            <h3>Paket 3 Bulan</h3>
+            <p class="price-old">1.080k</p>
+            <p class="price"><span>599k</span></p>
+            <p class="price-unit">/ 24 pertemuan</p>
+            <p class="per-session">&plusmn;25k per sesi</p>
+            <ul class="checklist">
+              <li>24x sesi terstruktur</li>
+              <li>Jadwal fleksibel</li>
+              <li>Modul &amp; practice sheet</li>
+              <li>Free konsultasi PR / tugas</li>
+              <li>Laporan perkembangan</li>
+              <li>Sertifikat level</li>
+            </ul>
+          </article>
         </div>
-        <!--
-          Link WhatsApp:
-          - ?text=... adalah pesan otomatis. Spasi ditulis %20, koma ditulis %2C
-          - target="_blank" = buka di tab baru
-          - rel="noopener noreferrer" = pengaman wajib saat pakai target="_blank"
-        -->
-        <a class="wa-button"
-           href="https://wa.me/62812XXXXXXXX?text=Halo%20Manjour%2C%20saya%20mau%20tanya%20les%20Mandarin"
-           target="_blank"
-           rel="noopener noreferrer">
-          WA: +62 812-XXXX-XXXX
-        </a>
-      </section>
 
-    </main>
+        <p class="free-note">Kelas gratis pertama, tanpa syarat.</p>
+      </div>
+    </section>
 
-    <!-- ================= FOOTER ================= -->
-    <footer class="footer">
-      <p>&copy; 2026 Manjour Mandarin Language Center</p>
-    </footer>
+    <!-- ===================== KENAPA MANJOUR ===================== -->
+    <section class="section" id="kenapa">
+      <div class="container">
+        <h2 class="section-title">Kenapa ManJour?</h2>
 
-  </div>
+        <div class="reasons">
+          <div class="reason">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z M8 7h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <h3>Kurikulum HSK 1-3</h3>
+              <p>Materi sesuai standar ujian internasional Mandarin.</p>
+            </div>
+          </div>
+          <div class="reason">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z M7 10.5V16c2 2 8 2 10 0v-5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <h3>Pengajar Berkualitas</h3>
+              <p>Tutor berpengalaman, cara mengajar interaktif.</p>
+            </div>
+          </div>
+          <div class="reason">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            <div>
+              <h3>Fokus Ngobrol</h3>
+              <p>Latihan percakapan sehari-hari (speaking &amp; listening).</p>
+            </div>
+          </div>
+          <div class="reason">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <div>
+              <h3>Fleksibel</h3>
+              <p>Online via Zoom atau offline private, jam bisa diatur.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- File JavaScript ditaruh paling bawah agar HTML selesai dimuat dulu -->
+    <!-- ===================== TESTIMONI =====================
+         PENTING: ganti dengan testimoni ASLI dari murid. Jangan dibuat-buat. -->
+    <section class="section section-alt" id="testimoni">
+      <div class="container">
+        <h2 class="section-title">Kata Mereka</h2>
+
+        <div class="testimonials">
+          <figure class="testimonial">
+            <blockquote>"[CONTOH &mdash; ganti dengan testimoni asli] Belajarnya santai, sekarang sudah berani perkenalan diri pakai Mandarin."</blockquote>
+            <figcaption><strong>Nama Murid</strong><span>Mahasiswa</span></figcaption>
+          </figure>
+          <figure class="testimonial">
+            <blockquote>"[CONTOH &mdash; ganti dengan testimoni asli] Jadwalnya bisa menyesuaikan jam kerja saya."</blockquote>
+            <figcaption><strong>Nama Murid</strong><span>Karyawan</span></figcaption>
+          </figure>
+          <figure class="testimonial">
+            <blockquote>"[CONTOH &mdash; ganti dengan testimoni asli] Anak saya jadi semangat belajar Mandarin."</blockquote>
+            <figcaption><strong>Nama Orang Tua</strong><span>Orang tua murid SD</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ =====================
+         <details> dan <summary> = buka-tutup otomatis tanpa JavaScript -->
+    <section class="section" id="faq">
+      <div class="container container-narrow">
+        <h2 class="section-title">Pertanyaan yang Sering Ditanya</h2>
+
+        <div class="faq">
+          <details>
+            <summary>Saya belum bisa Mandarin sama sekali, bisa ikut?</summary>
+            <p>Bisa. Kelas dimulai dari nol, mulai dari salam dan cara baca pinyin.</p>
+          </details>
+          <details>
+            <summary>Kelasnya lewat apa?</summary>
+            <p>Online lewat Zoom, atau offline private tatap muka.</p>
+          </details>
+          <details>
+            <summary>Kalau berhalangan, bisa ganti jadwal?</summary>
+            <p>Bisa. Kabari lewat WhatsApp sebelum kelas, nanti kita atur jadwal pengganti.</p>
+          </details>
+          <details>
+            <summary>Berapa lama sampai bisa HSK 1?</summary>
+            <p>Tergantung latihan. Dengan 2x pertemuan seminggu, biasanya sekitar 2-3 bulan.</p>
+          </details>
+          <details>
+            <summary>Bagaimana cara bayar?</summary>
+            <p>Lewat transfer bank atau e-wallet. Detailnya kami kirim lewat WhatsApp.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== AJAKAN TERAKHIR ===================== -->
+    <section class="final-cta">
+      <div class="container">
+        <h2>Mulai Perjalanan Mandarinmu Hari Ini</h2>
+        <p>Kelas pertama gratis. Tanya dulu juga boleh.</p>
+        <a href="https://wa.me/62812XXXXXXXX?text=Halo%20ManJour%2C%20saya%20mau%20tanya%20les%20Mandarin" target="_blank" rel="noopener" class="btn btn-gold">Konsultasi Gratis via WhatsApp</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 ManJour Mandarin Language Center</p>
+      <p class="footer-links">
+        <a href="https://wa.me/62812XXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
+        <!-- Ganti # dengan link Instagram asli -->
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+      </p>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
