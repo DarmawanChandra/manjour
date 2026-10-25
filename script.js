@@ -46,7 +46,7 @@ mainNav.querySelectorAll('a').forEach(function (link) {
 });
 
 /* ---------- 3. Fallback logo ----------
-   Kalau logo_ManJour.png tidak ditemukan, gambar disembunyikan.
+   Kalau logo_ManJour1.png tidak ditemukan, gambar disembunyikan.
    Tulisan "ManJour" tetap tampil. */
 function hideLogo() {
   brandLogo.style.display = 'none';
